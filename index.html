@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="task-tracker">
+<head>
+  <meta>
+  <title>Task Tracker</title>
+  <script src="/bower_components/angular/angular.min.js"></script>
+  <script src="/bower_components/angular/angular-route.min.js"></script>
+  <script src="lib/main.js"></script>
+</head>
+<body>
+  <header ng-controller="HeaderCtrl">
+    <h1>Task Tracker</h1>
+    <ul>
+      <li><a href="#/new">New</a></li>
+      <li><a href="#" ng-click="close()">Close</a></li>
+    </ul>
+  </header>
+  <div id="scope" ng-view></div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<h2>New Task</h2>
+<form name="newForm">
+  <div ng-class="{ error: newForm.name.$invalid && !newForm.name.$pristine }">
+    <label>Name</label>
+    <input type="text" name="name" ng-model="task.name" required>
+  </div>
+
+  <button ng-disabled="newForm.$invalid" ng-click="save()">Save</button>
+</form>
