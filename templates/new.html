@@ -2,13 +2,14 @@
 <form name="newForm">
   <div ng-class="{ error: newForm.name.$invalid && !newForm.name.$pristine }">
     <label>Name</label>
-    <input type="text" name="name" ng-model="habit.name" required>
+    <input type="text" name="name" placeholder="Name" ng-model="habit.name" required unique>
+    <span class="error" ng-show="uniqueError">This habit is already registered.</span>
   </div>
 
   <div ng-class="{ error: newForm.rewards.$invalid && !newForm.rewards.$pristine }">
     <label>Rewards</label>
-    <input type="text" name="rewards" ng-model="habit.rewards" required>
+    <input type="text" name="rewards" placeholder="Rewards" ng-model="habit.rewards" required>
   </div>
 
-  <button ng-disabled="newForm.$invalid" ng-click="save()">Save</button>
+  <button ng-disabled="newForm.$invalid" ng-click="save(habit)">Save</button>
 </form>

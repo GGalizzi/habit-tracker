@@ -6,14 +6,19 @@ module TestHelper
     visit "/index.html"
   end
 
+  def habits
+    res = page.evaluate_script("angular.element(document).injector().get('Habits').values")
+  end
+
   def habits_count
     res = page.evaluate_script("angular.element(document).injector().get('Habits').count")
   end
+  alias_method :habit_count, :habits_count
 
-  def reward_of(habit)
-    res = page.evaluate_script("angular.element(document.getElementById('scope')).scope().habits.values['#{habit}'].rewards")
+  def the_habit(habit)
+    res = page.evaluate_script("angular.element(document).injector().get('Habits').values['#{habit}']")
   end
-
+  
   def habits_json 
     fs = File.read('habits.json')
     fo = JSON.parse(fs)
