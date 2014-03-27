@@ -1,13 +1,13 @@
-<h2>New Task</h2>
+<h2>New Habit</h2>
 <form name="newForm">
   <div ng-class="{ error: newForm.name.$invalid && !newForm.name.$pristine }">
     <label>Name</label>
-    <input type="text" name="name" ng-model="task.name" required>
+    <input type="text" name="name" ng-model="habit.name" required>
   </div>
 
   <div ng-class="{ error: newForm.rewards.$invalid && !newForm.rewards.$pristine }">
     <label>Rewards</label>
-    <input type="text" name="rewards" ng-model="task.rewards" required>
+    <input type="text" name="rewards" ng-model="habit.rewards" required>
   </div>
 
   <button ng-disabled="newForm.$invalid" ng-click="save()">Save</button>

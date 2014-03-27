@@ -6,20 +6,20 @@ module TestHelper
     visit "/index.html"
   end
 
-  def tasks_count
-    res = page.evaluate_script("angular.element(document).injector().get('Tasks').count")
+  def habits_count
+    res = page.evaluate_script("angular.element(document).injector().get('Habits').count")
   end
 
-  def reward_of(task)
-    res = page.evaluate_script("angular.element(document.getElementById('scope')).scope().tasks.values['#{task}'].rewards")
+  def reward_of(habit)
+    res = page.evaluate_script("angular.element(document.getElementById('scope')).scope().habits.values['#{habit}'].rewards")
   end
 
-  def tasks_json 
-    fs = File.read('tasks.json')
+  def habits_json 
+    fs = File.read('habits.json')
     fo = JSON.parse(fs)
   end
 
   def truncate_json
-    File.open('tasks.json', 'w') { |file| file.truncate(0) }
+    File.open('habits.json', 'w') { |file| file.truncate(0) }
   end
 end

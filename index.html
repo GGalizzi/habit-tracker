@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html ng-app="tasksTracker">
+<html ng-app="habitsTrackerApp">
   <head>
     <meta>
-    <title>Task Tracker</title>
+    <title>Habit Tracker</title>
   </head>
   <body>
     <header ng-controller="HeaderCtrl">
-      <h1>Task Tracker</h1>
+      <h1>Habit Tracker</h1>
       <ul>
         <li><a href="#/new">New</a></li>
         <li><a href="#" ng-click="close()">Close</a></li>
@@ -17,7 +17,9 @@
 
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular/angular-route.min.js"></script>
-    <script src="lib/main.js"></script>
+    <script src="lib/app.js"></script>
+    <script src="lib/services/models/Habits.js"></script>
+    <script src="lib/controllers/controllers.js"></script>
 
   </body>
 </html>
