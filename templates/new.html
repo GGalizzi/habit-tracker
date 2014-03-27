@@ -5,5 +5,10 @@
     <input type="text" name="name" ng-model="task.name" required>
   </div>
 
+  <div ng-class="{ error: newForm.rewards.$invalid && !newForm.rewards.$pristine }">
+    <label>Rewards</label>
+    <input type="text" name="rewards" ng-model="task.rewards" required>
+  </div>
+
   <button ng-disabled="newForm.$invalid" ng-click="save()">Save</button>
 </form>
