@@ -4,6 +4,7 @@ nw
 nw.pak
 
 tests.json
+habits.json
 
 *.sw*
 /tmp
