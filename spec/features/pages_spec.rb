@@ -4,7 +4,7 @@ require_relative '../spec_helper.rb'
 
 feature "Habit Manager", :type => :feature do
   before(:each) { visit_app_index }
-  after(:all) { truncate_json }
+  after(:each) { truncate_json }
 
   subject { page }
 
@@ -12,6 +12,55 @@ feature "Habit Manager", :type => :feature do
     describe "header" do
       it { should have_selector('h1', "Habit Tracker") }
       it { should have_link('New', href: '#/new') }
+    end
+
+    describe "Habit List" do
+      before { populate_json }
+
+      it "should contain some habits" do
+        page.should have_content("Meditate")
+        page.should have_content("Program")
+        page.should have_content("Exercise")
+      end
+
+      it "should contain delete and edit" do
+        page.should have_button("delete")
+        page.should have_button("edit")
+      end
+
+      describe "delete function" do
+        it "should show a confirmation" do
+          click_button "delete-meditate"
+          page.should have_content("confirm")
+        end
+
+        it "canceling the deletion should avoid it" do
+          click_button "delete-meditate"
+          page.should have_content("cancel")
+          click_button("cancel")
+          page.should have_content("Meditate")
+        end
+
+        it "should delete the habit after confirming" do
+          click_button "delete-meditate"
+          expect{click_button "confirm"}.to change{habits_count}.by(-1);
+          page.should_not have_content("Error")
+          page.should_not have_content("Meditate")
+        end
+      end
+
+      describe "edit function" do
+        it "should allow editing of name" do
+          pending("changing code")
+          click_button "edit-meditate"
+          page.should have_selector('input', value: "Meditate")
+          page.should_not have_selector("span", text: "Meditate")
+          fill_in "input", with: "Mindfulness"
+          click_button "confirm"
+          page.should have_selector('span', text: "Mindfullness")
+          expect(the_habit("mindfullness")["name"]).to eq("Mindfullness")
+        end
+      end
     end
   end
 

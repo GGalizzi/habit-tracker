@@ -3,5 +3,7 @@ chromedriver2_server
 nw
 nw.pak
 
+tests.json
+
 *.sw*
 /tmp
