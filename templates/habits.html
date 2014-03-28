@@ -1,16 +1,17 @@
 <h3>{{ habits.count }}</h3>
 <ul>
   <li ht-habit ng-repeat="habit in habits.values" ng-transclude>
-    <span ng-switch on="action">
+    <span ng-switch on="actionElement">
       <span ng-switch-default>{{ habit.name }}</span>
       <input type="text" name="name" ng-model="newHabit.name" ng-init="setEdit(habit)" ng-switch-when="edit">
     </span>
-    <div class="habit-button">
-      <button class="edit"   id="edit-{{habit.name.toLowerCase()}}"   ng-show="action === 'index'" ht-modify ng-transclude>edit</button>
-      <button class="delete" id="delete-{{habit.name.toLowerCase()}}" ng-show="action === 'index'" ht-modify ng-transclude>delete</button>
 
-      <button class="confirm" ng-show="action !== 'index'" ht-confirm ng-transclude>confirm</button>
-      <button class="cancel"  ng-show="action !== 'index'" ht-confirm ng-transclude>cancel</button>
+    <div class="habit-button">
+      <button class="edit"   id="edit-{{habit.name.toLowerCase()}}"   ng-show="actionElement === 'show'" ng-disabled="action.list !== 'index'" ht-modify ng-transclude>edit</button>
+      <button class="delete" id="delete-{{habit.name.toLowerCase()}}" ng-show="actionElement === 'show'" ht-modify ng-transclude>delete</button>
+
+      <button class="confirm" ng-show="actionElement !== 'show'" ht-confirm ng-transclude>confirm</button>
+      <button class="cancel"  ng-show="actionElement !== 'show'" ht-confirm ng-transclude>cancel</button>
     </div>
   </li>
 </ul>

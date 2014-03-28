@@ -67,6 +67,11 @@ feature "Habit Manager", :type => :feature do
           page.should have_selector('span', text: "Meditate")
           page.should_not have_content("Chuck Norris it")
         end
+
+        it "should not allow editing more than one at a time" do
+          click_button "edit-meditate"
+          page.should_not have_button("edit-program")
+        end
       end
     end
   end
