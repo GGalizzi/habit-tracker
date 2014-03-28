@@ -51,14 +51,21 @@ feature "Habit Manager", :type => :feature do
 
       describe "edit function" do
         it "should allow editing of name" do
-          pending("changing code")
           click_button "edit-meditate"
-          page.should have_selector('input', value: "Meditate")
+          page.should have_selector('input')
           page.should_not have_selector("span", text: "Meditate")
-          fill_in "input", with: "Mindfulness"
+          fill_in "name", with: "Mindfulness"
           click_button "confirm"
-          page.should have_selector('span', text: "Mindfullness")
-          expect(the_habit("mindfullness")["name"]).to eq("Mindfullness")
+          page.should have_selector('span', text: "Mindfulness")
+          expect(the_habit("mindfulness")["name"]).to eq("Mindfulness")
+        end
+
+        it "should allow cancelling the edit" do
+          click_button "edit-meditate"
+          fill_in "name", with: "Chuck Norris it"
+          click_button "cancel"
+          page.should have_selector('span', text: "Meditate")
+          page.should_not have_content("Chuck Norris it")
         end
       end
     end

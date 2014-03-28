@@ -3,6 +3,8 @@
   <head>
     <meta>
     <title>Habit Tracker</title>
+
+    <link href="style/main.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body>
     <header ng-controller="HeaderCtrl">
@@ -12,11 +14,15 @@
         <li><a href="#" ng-click="close()">Close</a></li>
       </ul>
     </header>
-    <div id="scope" ng-view></div>
+
+    <div class="scope-container">
+      <div id="scope" class="view-animate" ng-view></div>
+    </div>
 
 
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular/angular-route.min.js"></script>
+    <script src="/bower_components/angular/angular-animate.min.js"></script>
     <script src="lib/app.js"></script>
     <script src="lib/services/models/Habits.js"></script>
     <script src="lib/controllers/controllers.js"></script>
