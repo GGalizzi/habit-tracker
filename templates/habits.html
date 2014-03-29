@@ -1,9 +1,9 @@
-<h3>{{ habits.count }}</h3>
 <ul>
   <li ht-habit ng-repeat="habit in habits.values" ng-transclude>
     <span ng-switch on="actionElement">
       <div ng-switch-default>
         <span>{{ habit.name }}</span>
+        <span>{{ habit.level }}</span>
         <button class="success" id="success-{{habit.name.toLowerCase()}}" ng-click="score(habit, 'success')">success</button>
         <button class="fail"    id="fail-{{habit.name.toLowerCase()}}"    ng-click="score(habit, 'fail')">fail</button>
       </div>
