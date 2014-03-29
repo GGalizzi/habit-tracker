@@ -81,8 +81,7 @@ feature "Habit Manager", :type => :feature do
       {"values" => { "meditate" => { "name" => "Meditate",
                                      "rewards" => "Improve self-discipline, self-control, self-awareness." ,
                                      "level" => 1,
-                                     "points" => 0,
-                                     "pointsToLevel" => 500
+                                     "points" => 0
       }}}
     end
 
@@ -139,7 +138,6 @@ feature "Habit Manager", :type => :feature do
       it "starts the habit at level 1" do
         click_button "Save"
         expect(the_habit("meditate")["level"]).to eq(habit["level"])
-        expect(the_habit("meditate")["pointsToLevel"]).to eq(habit["pointsToLevel"])
       end
 
       it "adds the habit to the json file" do
@@ -148,6 +146,24 @@ feature "Habit Manager", :type => :feature do
       end
 
       it { click_button "Save"; should have_content(habit["name"]) }
+    end
+  end
+
+  feature "leveling system" do
+    before { populate_json }
+
+    describe "when the points are enough, level " do
+      it "should receive 240 experience per completion" do
+        click_button "success-meditate"
+        expect(the_habit("meditate")["points"]).to eq(240)
+      end
+
+      it "should level up when enough experience is reached" do
+        5.times { click_button "success-meditate" }
+        expect(the_habit("meditate")["level"]).to eq(2)
+        11.times { click_button "success-meditate" }
+        expect(the_habit("meditate")["level"]).to eq(4)
+      end
     end
   end
 end
