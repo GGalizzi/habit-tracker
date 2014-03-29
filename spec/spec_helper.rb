@@ -4,15 +4,11 @@ require 'test_helper'
 RSpec.configure do |config|
   config.include Capybara::DSL
   config.include TestHelper
-=begin
   config.before :each do
-    Capybara::Session.new(:remote_browser)
-    #visit('app://tracker/index.html')
-    visit('app://tracker/404.html')
+    visit_app_index
   end
 
   config.after :each do
-    page.driver.browser.navigate.refresh
+    truncate_json
   end
-=end
 end
