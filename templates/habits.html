@@ -4,6 +4,7 @@
       <div ng-switch-default>
         <span>{{ habit.name }}</span>
         <span>{{ habit.level }}</span>
+        <span>{{ habit.points}}</span>
         <button class="success" id="success-{{habit.name.toLowerCase()}}" ng-click="score(habit, 'success')">success</button>
         <button class="fail"    id="fail-{{habit.name.toLowerCase()}}"    ng-click="score(habit, 'fail')">fail</button>
       </div>

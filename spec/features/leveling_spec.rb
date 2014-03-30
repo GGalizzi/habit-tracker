@@ -16,6 +16,19 @@ feature "leveling system", :type => :feature do
       expect(the_habit("meditate")["level"]).to eq(2)
       11.times { click_button "success-meditate" }
       expect(the_habit("meditate")["level"]).to eq(4)
+      5.times { click_button "success-program" }
+      expect(the_habit("program")["level"]).to eq(2)
+    end
+  end
+
+  describe "failing reduces experience" do
+    before { 20.times { click_button "success-meditate" } }
+    it "should receive a penalty of 300 points" do
+      expect { click_button "fail-meditate" }.to change{ the_habit("meditate")["points"] }.by(-300)
+    end
+
+    it "should reduce the habit level when enough fails are gotten" do
+      expect { 5.times { click_button "fail-meditate" } }.to change{ the_habit("meditate")["level"]}.by(-1)
     end
   end
 end
