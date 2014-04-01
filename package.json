@@ -1,4 +1,10 @@
 {
   "name": "Task Tracker",
-  "main": "app://tracker/index.html"
+  "main": "app://tracker/index.html",
+
+  "window": {
+    "width": 310,
+    "height": 510,
+    "position": "center"
+  }
 }

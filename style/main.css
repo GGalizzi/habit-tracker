@@ -1,33 +1,52 @@
-.scope-container {
-  position: relative;
-  border: 1px solid black;
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.view-animate.ng-enter, .view-animate.ng-leave {
-  /*
-  -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-  */
+header {
+  background-color: #22354B;
+  color: white;
+}
 
-  display: block;
-  width: 100%;
-  border-left: 1px solid black;
+button {
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #223548;
+}
 
+.title {
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+.nav li:first-of-type {
+  border-left: 1px solid white;
+}
+
+.nav li {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-top: 1px solid white;
+  border-right: 1px solid white;
+}
+
+.habit {
+  position: relative;
+  border-bottom: 1px solid black;
+  padding: 0.7em;
+}
+
+.score-button-container {
   position: absolute;
-  top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
 }
 
-.view-animate.ng-enter {
-  left: 100%;
-}
-
-.view-animate.ng-enter.ng-enter-active {
-  left: 0;
-}
-
-.view-animate.ng-leave.ng-leave-active {
-  left: -100%;
+.modify-button-container {
+  position: absolute;
+  right: 0;
+  top: 0;
 }

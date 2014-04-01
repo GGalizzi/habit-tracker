@@ -1,12 +1,14 @@
 <ul>
-  <li ht-habit ng-repeat="habit in habits.values" ng-transclude>
+  <li class="habit" ht-habit ng-repeat="habit in habits.values" ng-transclude>
     <span ng-switch on="actionElement">
       <div ng-switch-default>
         <span>{{ habit.name }}</span>
         <span>{{ habit.level }}</span>
         <span>{{ habit.points}}</span>
-        <button class="success" id="success-{{habit.name.toLowerCase()}}" ng-click="score(habit, 'success')">success</button>
-        <button class="fail"    id="fail-{{habit.name.toLowerCase()}}"    ng-click="score(habit, 'fail')">fail</button>
+        <div class="score-button-container">
+          <button class="success" id="success-{{habit.name.toLowerCase()}}" ng-click="score(habit, 'success')">success</button><button class="fail"    id="fail-{{habit.name.toLowerCase()}}"    ng-click="score(habit, 'fail')">
+          fail</button>
+      </div>
       </div>
 
       <div ng-switch-when="edit">
@@ -14,9 +16,9 @@
       </div>
     </span>
 
-    <div class="habit-button">
-      <button class="edit"   id="edit-{{habit.name.toLowerCase()}}"   ng-show="actionElement === 'show'" ng-disabled="action.list !== 'index'" ht-modify ng-transclude>edit</button>
-      <button class="delete" id="delete-{{habit.name.toLowerCase()}}" ng-show="actionElement === 'show'" ht-modify ng-transclude>delete</button>
+    <div class="modify-button-container">
+      <button class="edit"   id="edit-{{habit.name.toLowerCase()}}"   ng-show="actionElement === 'show'" ng-disabled="action.list !== 'index'" ht-modify ng-transclude>edit</button><button class="delete" id="delete-{{habit.name.toLowerCase()}}" ng-show="actionElement === 'show'" ht-modify ng-transclude>
+      delete</button>
 
       <button class="confirm" ng-show="actionElement !== 'show'" ht-confirm ng-transclude>confirm</button>
       <button class="cancel"  ng-show="actionElement !== 'show'" ht-confirm ng-transclude>cancel</button>
