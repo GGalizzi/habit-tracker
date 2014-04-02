@@ -31,7 +31,7 @@ feature "leveling system", :type => :feature do
       expect { 5.times { click_button "fail-meditate" } }.to change{ the_habit("meditate")["level"]}.by_at_least(-1)
     end
 
-    it "should not go below level 0" do
+    it "should not go below level 1" do
       10.times { click_button "fail-meditate" }
       expect { click_button "fail-meditate" }.not_to change{ the_habit("meditate")["level"] }
     end
