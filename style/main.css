@@ -50,3 +50,9 @@ button {
   right: 0;
   top: 0;
 }
+
+ht-progress {
+  background-color: red;
+  display: block;
+  border: 1px solid green;
+}

@@ -5,6 +5,7 @@
         <span>{{ habit.name }}</span>
         <span>{{ habit.level }}</span>
         <span>{{ habit.points}}</span>
+        <ht-progress habit="habit"></ht-progress>
         <div class="score-button-container">
           <button class="success" id="success-{{habit.name.toLowerCase()}}" ng-click="score(habit, 'success')">success</button><button class="fail"    id="fail-{{habit.name.toLowerCase()}}"    ng-click="score(habit, 'fail')">
           fail</button>
